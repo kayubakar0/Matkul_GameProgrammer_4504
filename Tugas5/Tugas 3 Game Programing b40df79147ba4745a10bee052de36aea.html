@@ -1,0 +1,672 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Tugas 3 Game Programing</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b40df791-47ba-4745-a10b-ee052de36aea" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🎓</span></div><h1 class="page-title">Tugas 3 Game Programing</h1></header><div class="page-body"><p id="bbc1ca55-c681-45f8-a2dd-da4ade848c8c" class="">
+</p><p id="d739550d-bb69-4665-b26f-a7e3aa75493c" class="">NAMA KELOMPOK : </p><ol type="1" id="80cc5499-cd7a-40d5-82bd-cdce9c34de81" class="numbered-list" start="1"><li>Muhammad Adrian Surya (A11.2019.12248)</li></ol><ol type="1" id="efb460d8-d17c-41c4-8dfd-020d06eafb40" class="numbered-list" start="2"><li>Dio Fajriyanto (A11.2019.12046)</li></ol><ol type="1" id="cd749c8a-b489-4a2a-a29a-6e9a558be4d9" class="numbered-list" start="3"><li>Yuniar Kurniawan Putra (A11.2020.12557)</li></ol><ol type="1" id="76fea52f-0172-46c1-9841-cb9074da3198" class="numbered-list" start="4"><li>Adam Zufar Majid (A11.2019.12115)</li></ol><h2 id="e0b7bb42-380b-4dd4-942a-55d2e038a810" class="">Overview</h2><p id="3ff60673-0dfc-47a8-a6d8-4ef299d1c6e8" class="">Judul : Matching Puzzle</p><p id="b889b811-1163-434f-8ff3-bd773359ddc5" class="">Genre : Puzzle &amp; Math </p><p id="dcca5621-4f42-4d4a-bbf7-7b49397e3735" class="">Target : 12 - 18 tahun</p><p id="5be50f5a-058a-4853-a8ba-3ac9b04ca397" class="">Platform : Android</p><figure id="e618ca34-9371-4ff3-a388-84e569e4750f" class="image" style="text-align:center"><a href="Untitled_Artwork.gif"><img style="width:576px" src="Untitled_Artwork.gif"/></a></figure><h2 id="469af863-5753-432d-9e2a-96c7359b4a61" class="">Core Experience</h2><p id="d7afc00b-9e7d-45b2-ae09-2f34aa0d7c98" class="">Statment :Game Puzzle namun mengarah pada perhitungan</p><figure id="e377241b-83ad-4abe-9efc-e5b2e276bea5" class="image"><a href="18255464571535699000.svg"><img style="width:36px" src="18255464571535699000.svg"/></a></figure><ol type="1" id="d5819e23-f540-4d9f-9d1a-265b8c183d27" class="numbered-list" start="1"><li>Game yang bisa dimainkan oleh 12 - 18 tahun</li></ol><ol type="1" id="20644ba3-939a-4acf-8160-9c6f3236a68b" class="numbered-list" start="2"><li>User akan diberikan experience untuk menjawab pertanyaan secara benar</li></ol><p id="680007f6-92bb-451a-a51f-95044bdf1e25" class="">Premise : Sebuah game puzzle yang nantinya User diberikan tantangan untuk menyelesaikan perhitungan dengan menemukan hasil.</p><h2 id="334d4af7-f2be-4b4f-91ed-7e0712dd13e3" class="">Core Mechanic</h2><p id="a3f78759-334b-43e3-a615-d85713944c8e" class=""><strong>Game View</strong> : Tampilan game akan mengunakan konsep 2D</p><ul id="70e76610-44c4-4dec-9c37-5a665a942ce9" class="bulleted-list"><li style="list-style-type:disc"><strong>Setup</strong> : Player akan masuk ke dalam halaman yang berisi satu baris kotak dengan angka 2 dengan posisi random</li></ul><ul id="33afed70-4d90-445c-9987-f69a03d28ef8" class="bulleted-list"><li style="list-style-type:disc"><strong>End Condition</strong> : Jika kotak angka memenuhi satu layar maka game akan berakhir</li></ul><ul id="cc67238b-8282-453c-8c44-55654bc30855" class="bulleted-list"><li style="list-style-type:disc"><strong>Progression of Play : </strong>Apabila 2 kotak dengan nilai yang sama bersebelahan maka bisa digabungkan menjadi satu</li></ul><h3 id="0c4394e6-fb88-41d4-a577-a76ad6ea732b" class="">Scoring</h3><ol type="a" id="76fa28d9-a16d-4205-abd4-8619b6391c2e" class="numbered-list" start="1"><li>2 + 2 mendapatkan score 1</li></ol><ol type="a" id="ce1653d5-1a9c-426b-80d4-5d101c747565" class="numbered-list" start="2"><li>4 + 4 mendapatkan score 2</li></ol><ol type="a" id="54397545-5779-4e87-b874-08bceb693756" class="numbered-list" start="3"><li>8 + 8 mendapatkan score 3</li></ol><ol type="a" id="befd2d02-9fe7-4e75-8878-b1d5a0eff18f" class="numbered-list" start="4"><li>16 + 16 mendapatkan score 5</li></ol><ol type="a" id="e94d4f9c-46fa-426f-b94f-f38794a9071e" class="numbered-list" start="5"><li>32 + 32 mendapatkan score 8</li></ol><ol type="a" id="71be0ffc-fa57-4851-bfc8-b4e17c6a0a71" class="numbered-list" start="6"><li>64 + 64 mendapatkan score 13</li></ol><ol type="a" id="f8dbcc41-6738-4603-9882-48431d5dc765" class="numbered-list" start="7"><li>128 + 128 mendapatkan score 21</li></ol><p id="be63c49b-7db1-4d64-90b6-af50c6c2d9a5" class="">… dst mendapatkan score 34</p><h3 id="9c466d38-085f-4800-bf07-d27a7f401319" class="">Mechanic Example</h3><div id="200e64f9-3e9c-4694-bbb2-22bc3c00e7da" class="column-list"><div id="c37cfaea-8e6e-4ce3-91ba-ca2100fa1414" style="width:50%" class="column"><figure id="d0019018-b2d3-43d8-9f52-c906582ad1d5"><div class="source"><a href="New-file.mp4">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/06d22b18-a766-40a9-89f3-8e9cf3283711/New-file.mp4</a></div></figure></div><div id="07ebed87-0809-4217-9ad5-d4c6b2e465db" style="width:50%" class="column"><figure id="ec176076-a3cd-4ab4-97e0-d0130c0d8918"><div class="source"><a href="mechanic-kesamping.mp4">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca17dfca-1ae4-4a1c-a754-2126ee6307ab/mechanic-kesamping.mp4</a></div></figure></div></div><h3 id="9ebe82a9-2e8a-4ec3-b040-378ceb3deddc" class="">Wireframe</h3><figure id="97c14e8c-e742-4e65-bb9f-bfb079868d4b" class="image"><a href="Matching_Puzzle_Wire_Frame.png"><img style="width:1920px" src="Matching_Puzzle_Wire_Frame.png"/></a></figure><h2 id="cf9a335c-3ef0-4139-ba9e-ad8f5751e10c" class=""></h2><h2 id="1e35c54b-2f02-4da4-976f-a0e6e083d2cc" class="">Flowchart</h2><figure id="2918befb-ae80-47a8-8622-a54bb578aa73" class="image"><a href="flowchart_game.jpeg"><img style="width:569px" src="flowchart_game.jpeg"/></a></figure><figure id="81a3151c-0eef-44ea-b513-b45810b25622" class="image"><a href="flowchart_game%201.jpeg"><img style="width:569px" src="flowchart_game%201.jpeg"/></a></figure><h3 id="3e8d5963-55b2-4108-ad9c-f4b241856640" class="">Block Puzzle</h3><h2 id="78a53107-b70f-4da4-a274-4e83e6eed60d" class="">Referensi</h2><h3 id="73a4f624-afdf-4d8d-a07a-012bfe9220ea" class="">2048</h3><figure id="1e9d9ee5-fcf5-4234-a4c9-36d41351b2ba" class="image"><a href="2048.jpg"><img style="width:480px" src="2048.jpg"/></a></figure><p id="7e2156bb-e738-4fb6-8a98-5da144d26533" class="">Game matematika yang mengaruskan pemainnya untuk menambahkan bilangan yang sama, game ini hanya dapat melakukan operasi pertambahan dan game ini harus menambahkan bilangan yang sama. game ini dibatasi oleh kolom 4 x 4, dapat di tambah sesuai keinginan. cara memainkan game ini adalah dengan cara swipe atas bawah kanan dan kiri agar dapat melakukan operasi tambah. cara bermainnya setip kita swipe akan nambah satu bilangan, cara untuk kalah adalah ketika kolom sudah penuh dengan angka, dan tidak dapat melakukan penjumlahan.</p><p id="e6fc075f-dad4-4f9a-bab0-0e2eebb192ee" class="">
+</p><h3 id="015cbb14-385d-4da8-8348-0e9dca463882" class="">BLOCK PUZZLE</h3><figure id="16232258-4200-4efb-8a21-3b0d9ed3a765" class="image"><a href="blcok_puzzle.jpg"><img style="width:336px" src="blcok_puzzle.jpg"/></a></figure><p id="305c9b17-a534-42eb-b33c-4f7fe6080be5" class="">Game ini dimainkan dengan cara kita memindahlan 3 puzle di bawah ke area permainan jika puzzle memenuhi dari ujung atas sampai bawah, atau dari ujung kanan sampai ujung kiri maka puzzle yang memenuhu tersebut akan hilang. setiap 3 bentuk itu selesai di taruh ke area permainan akan muncul puzle yang berbeda beda lagi, cara untk kalah ketika area permainan sudah penuh dan 3 puzzle dibawah sudah tidak bisa di masukkan ke area permainan.</p><h2 id="0670096a-fd54-4c90-942d-f43dad68b2f1" class="">Asset</h2><ol type="1" id="2b8d9358-de52-46fb-832b-b23bc34f1b44" class="numbered-list" start="1"><li>Sprite</li></ol><figure id="b158d35e-4cbd-481c-8e7b-faf6722e8a66"><a href="https://assetstore.unity.com/packages/templates/packs/falling-numbers-134243" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Falling Numbers | Packs | Unity Asset Store</div><div class="bookmark-description">Use Falling Numbers from SgLib Games to elevate your next project. Find this &amp; more Packs and templates on the Unity Asset Store.</div></div><div class="bookmark-href"><img src="https://unity-assetstorev2-prd.storage.googleapis.com/cdn-origin/images/favicons/favicon.ico" class="icon bookmark-icon"/>https://assetstore.unity.com/packages/templates/packs/falling-numbers-134243</div></div><img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/2fc8539b-4745-40a2-b58f-bdcb48f1652a.png?v=1" class="bookmark-image"/></a></figure><ol type="1" id="1453e9de-c765-4361-91c7-ba99841d515e" class="numbered-list" start="2"><li>Animation Number</li></ol><figure id="2dfe4d37-36df-4b4b-81a1-1aedbede790f"><a href="https://assetstore.unity.com/packages/tools/gui/number-animation-system-165040" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Number Animation System | GUI Tools | Unity Asset Store</div><div class="bookmark-description">Use the Number Animation System from Miso Studio on your next project. Find this GUI tool &amp; more on the Unity Asset Store.</div></div><div class="bookmark-href"><img src="https://unity-assetstorev2-prd.storage.googleapis.com/cdn-origin/images/favicons/favicon.ico" class="icon bookmark-icon"/>https://assetstore.unity.com/packages/tools/gui/number-animation-system-165040</div></div><img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/08dbc41b-b226-4a0a-9db9-11f39ae5d2c9.jpg?v=1" class="bookmark-image"/></a></figure><ol type="1" id="5a1ecf72-8e2b-46cc-b3a4-c79ed3668727" class="numbered-list" start="3"><li>SFX</li></ol><figure id="1b4bd199-f302-44af-bc67-9f253e54ab63"><a href="https://assetstore.unity.com/packages/audio/music/free-music-for-puzzle-games-152395" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">FREE Music For Puzzle Games | Audio Music | Unity Asset Store</div><div class="bookmark-description">Layer in the sounds of FREE Music For Puzzle Games from Aural Space for your next project. Browse all audio options on the Unity Asset Store.</div></div><div class="bookmark-href"><img src="https://unity-assetstorev2-prd.storage.googleapis.com/cdn-origin/images/favicons/favicon.ico" class="icon bookmark-icon"/>https://assetstore.unity.com/packages/audio/music/free-music-for-puzzle-games-152395</div></div><img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/bcaf622a-dd93-4552-a9cc-0c87aee5127d.png?v=1" class="bookmark-image"/></a></figure><ol type="1" id="920d956f-e426-4a97-a595-5b0e52c27a19" class="numbered-list" start="4"><li>Backsound Music</li></ol><figure id="f0a57568-cb36-44c9-8482-4db7c510187c"><a href="https://assetstore.unity.com/packages/audio/music/electronic/free-soundtrack-chill-synthwave-194432" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Free Soundtrack (Chill Synthwave) | Electronic Music | Unity Asset Store</div><div class="bookmark-description">Layer in the sounds of Free Soundtrack (Chill Synthwave) from Bara Amann for your next project. Browse all audio options on the Unity Asset Store.</div></div><div class="bookmark-href"><img src="https://unity-assetstorev2-prd.storage.googleapis.com/cdn-origin/images/favicons/favicon.ico" class="icon bookmark-icon"/>https://assetstore.unity.com/packages/audio/music/electronic/free-soundtrack-chill-synthwave-194432</div></div><img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/a13de2c4-67a7-4b6c-996d-ce1354be9e25.png?v=1" class="bookmark-image"/></a></figure><ol type="1" id="ed0e3eb6-a74f-440b-a866-d9adc0c4eda0" class="numbered-list" start="5"><li>SFX Tools</li></ol><figure id="cd2085ae-ae73-4ce8-b732-2dcc4248988c"><a href="https://assetstore.unity.com/packages/audio/music/electronic/rpg-puzzle-game-music-w-music-script-37661" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">RPG &amp; Puzzle Game Music (w/ Music Script) | Electronic Music | Unity Asset Store</div><div class="bookmark-description">Layer in the sounds of RPG &amp; Puzzle Game Music (w/ Music Script) from Red Iron Labs for your next project. Browse all audio options on the Unity Asset Store.</div></div><div class="bookmark-href"><img src="https://unity-assetstorev2-prd.storage.googleapis.com/cdn-origin/images/favicons/favicon.ico" class="icon bookmark-icon"/>https://assetstore.unity.com/packages/audio/music/electronic/rpg-puzzle-game-music-w-music-script-37661</div></div><img src="https://assetstorev1-prd-cdn.unity3d.com/key-image/78b9dad6-b9d7-45be-8dc8-94219bb8dfde.jpg?v=1" class="bookmark-image"/></a></figure><p id="fc52dcd4-069f-45a1-9f32-07c7c5f5f776" class="">
+</p></div></article></body></html>
